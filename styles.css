@@ -16,6 +16,7 @@ main {
 }
 
 .splash-wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,24 +28,39 @@ main {
   /* font-family: "Rye", cursive; */
   font-family: "Roboto", sans-serif;
 
-  /* background-image: url("images/background-splash-1.jpg");
+  background-image: url("images/background-splash-1.jpg");
   background-size: auto 100vh;
-  background-repeat: no-repeat; */
+  background-repeat: no-repeat;
 }
 
-.splash-wrapper h1 {
+.brand-name {
+  margin-top: 0;
   font-size: 2rem;
 }
-.splash-wrapper h2 {
+.tagline {
   font-size: 1rem;
 }
 
 .logo {
-  width: 200px;
-  opacity: 50%;
+  margin: 50px;
+  width: 150px;
 }
 
 .text-wrapper {
   width: 100%;
+  padding: 50px;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.credits {
+  position: absolute;
+  padding: 5px;
+  bottom: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.credits :is(a, a:visited, a:focus, a:hover) {
+  color: white;
+text-decoration: none;
+}
+
