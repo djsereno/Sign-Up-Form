@@ -5,13 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="normalize.css" />
     <link rel="stylesheet" href="styles.css" />
     <title>Sign-Up Form</title>
   </head>
   <body>
     <main>
-      <h1>Sign-Up Form</h1>
+      <h1>SpiceScape</h1>
+      <h2>The flavors of the world, delivered to your doorstep</h2>
+      <p>
+        SpiceScape is a monthly "global flavor box" subscription service that delivers a
+        curated selection of unique, hard-to-find spices, seasonings, and condiments from around the
+        world! Each box features a different country or region, with a mix of both traditional and
+        modern ingredients, as well as recipes and cooking tips to help you explore new flavor
+        combinations and cuisines.
+      </p>
+      <p>This is not a real online service, but wouldn't it be great if it was?</p>
+      <form action="" method="post">
+        <h2>Sign Me Up!</h2>
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" name="first_name">
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" name="last_name">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <label for="phone"> Phone Number</label>
+        <input type="tel" id="phone" name="phone">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <label for="confirm">Confirm Password</label>
+        <input type="password" id="confirm" name="confirm" required>
+        <button type="submit">Create Account</button>
+      </form>
+      <p>Already have an account? <a href="">Log In</a></p>
     </main>
   </body>
 </html>
