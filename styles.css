@@ -2,6 +2,12 @@
 /* font-family: 'Rye', cursive; */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 /* font-family: 'Roboto', sans-serif; */
+:root {
+  --color-background: #f9fafb;
+  --color-accent: #d4d4d4;
+  --color-primary: #d71741;
+  --color-dark: #333;
+}
 
 * {
   margin: 0;
@@ -13,6 +19,7 @@ main {
   display: grid;
   width: 100vw;
   grid-template-columns: 4fr 6fr;
+  background-color: var(--color-background);
 }
 
 .splash-wrapper {
@@ -23,7 +30,7 @@ main {
   justify-content: center;
   height: 100vh;
   text-align: center;
-  background-color: #222;
+  background-color: var(--color-dark);
   color: white;
   /* font-family: "Rye", cursive; */
   font-family: "Roboto", sans-serif;
@@ -61,6 +68,52 @@ main {
 
 .credits :is(a, a:visited, a:focus, a:hover) {
   color: white;
-text-decoration: none;
+  text-decoration: none;
 }
 
+.form-wrapper {
+  padding: 100px 50px;
+  font-family: "Roboto", sans-serif;
+  border-left: 1px solid var(--color-accent);
+  color: var(--color-dark);
+}
+
+.form-wrapper p {
+  max-width: 700px;
+}
+
+form {
+  margin: 50px -50px 50px;
+  padding: 50px;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.form-row {
+  display: flex;
+  margin: 15px 0px;
+  column-gap: 50px;
+}
+
+.form-entry {
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+}
+
+button {
+  margin-bottom: 25px;
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-primary);
+  color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.log-in {
+  text-decoration: none;
+  color: var(--color-primary);
+  font-weight: bold;
+}
