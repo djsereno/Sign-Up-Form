@@ -10,6 +10,7 @@
   --color-dark: #333;
   --color-focus: #47bad4;
   --color-invalid: #d71741;
+  --color-valid: #5cb85c;
 }
 
 * {
@@ -164,6 +165,10 @@ input:active {
 
 input:focus:invalid {
   outline: 2px solid var(--color-invalid);
+}
+
+input.valid {
+  outline: 2px solid var(--color-valid);
 }
 
 button {
