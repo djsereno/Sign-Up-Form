@@ -2,7 +2,7 @@ const email = document.querySelector("#email");
 const phone = document.querySelector("#phone");
 const pw = document.querySelector("#password");
 const pwConfirm = document.querySelector("#confirm");
-const pwRules = document.querySelectorAll(".password-rules p:nth-child(even)");
+const pwRules = document.querySelectorAll(".password-rules li");
 const pwRulesDiv = document.querySelector(".password-rules");
 
 console.log(pwRules);
