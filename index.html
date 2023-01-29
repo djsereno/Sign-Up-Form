@@ -91,7 +91,20 @@
                 >Password<span><strong>*</strong></span></label
               >
               <div>
-                <input type="password" id="password" name="password" required />
+                <input type="text" id="password" name="password" required />
+                <span></span>
+              </div>
+              <div class="password-rules">
+                <p><strong>Passwords must satisfy the following rules:</strong></p>
+                <p>Length between 8-20 characters.</p>
+                <span></span>
+                <p>Contain at least 1 lowercase letter [a-z]</p>
+                <span></span>
+                <p>Contain at least 1 uppercase letter [A-Z]</p>
+                <span></span>
+                <p>Contain at least 1 numeric digit [0-9]</p>
+                <span></span>
+                <p>Contain at least 1 special character [#?!@$%^&*-]</p>
                 <span></span>
               </div>
             </div>
@@ -100,7 +113,7 @@
                 >Confirm Password<span><strong>*</strong></span></label
               >
               <div>
-                <input type="password" id="confirm" name="confirm" required />
+                <input type="text" id="confirm" name="confirm" required />
                 <span></span>
               </div>
             </div>

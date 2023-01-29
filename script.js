@@ -2,6 +2,9 @@ const email = document.querySelector("#email");
 const phone = document.querySelector("#phone");
 const pw = document.querySelector("#password");
 const pwConfirm = document.querySelector("#confirm");
+const pwRules = document.querySelectorAll(".password-rules p:nth-child(even)");
+
+console.log(pwRules);
 
 email.addEventListener("keyup", setInteracted);
 phone.addEventListener("keyup", setInteracted);
@@ -18,15 +21,18 @@ function setInteracted(e) {
 }
 
 function verifyPassword() {
-  password = pw.value;
-  /[a-z]+/.test(password) &&
-  /[A-Z]+/.test(password) &&
-  /[0-9]+/.test(password) &&
-  /[#?!@$%^&*-]+/.test(password) &&
-  password.length >= 8 &&
-  password.length <= 20
-    ? pw.classList.remove("invalid")
-    : pw.classList.add("invalid");
+  const rules = [/^.{8,20}$/, /[a-z]+/, /[A-Z]+/, /[0-9]+/, /[#?!@$%^&*-]+/];
+  let valid = true;
+
+  for (let i = 0; i < rules.length; i++) {
+    if (rules[i].test(pw.value)) {
+      pwRules[i].classList.add("valid");
+    } else {
+      pwRules[i].classList.remove("valid");
+      valid = false;
+    }
+  }
+  valid ? pw.classList.remove("invalid") : pw.classList.add("invalid");
 }
 
 function confirmPassword() {
