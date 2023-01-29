@@ -132,9 +132,11 @@ form {
   text-transform: uppercase;
 }
 
-/* .form-entry:nth-child(even) {
-  min-width: 50%;
-} */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 
 label {
   margin-bottom: 0.2rem;
@@ -163,17 +165,21 @@ input:active {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+input.interacted + span::before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: 0.3rem;
+  background-color: white;
+}
+
 input.interacted:not(.invalid):valid {
   outline: 2px solid var(--color-valid);
 }
+
 input.interacted:not(.invalid):valid + span::before {
-  position: absolute;
-  margin-right: 5px;
-  bottom: 0;
-  right: 0;
   content: "✓";
   color: var(--color-valid);
-  background-color: white;
 }
 
 input.interacted:invalid,
@@ -182,13 +188,8 @@ input.interacted.invalid {
 }
 input.interacted:invalid + span::before,
 input.interacted.invalid + span::before {
-  position: absolute;
-  margin-right: 5px;
-  bottom: 0;
-  right: 0;
   content: "✖";
   color: var(--color-invalid);
-  background-color: white;
 }
 
 .password-rules {
@@ -210,7 +211,6 @@ input.interacted.invalid + span::before {
   padding: 0;
   line-height: 1rem;
   color: var(--color-invalid);
-  
 }
 
 .password-rules p:first-child {
@@ -222,8 +222,6 @@ input.interacted.invalid + span::before {
   margin: auto;
 }
 
-
-
 .password-rules span::before {
   content: "✖";
   color: var(--color-invalid);
@@ -233,13 +231,12 @@ input.interacted.invalid + span::before {
 .password-rules p.valid {
   color: var(--color-valid);
 }
+
 .password-rules p.valid + span::before {
   content: "✓";
   color: var(--color-valid);
   background-color: white;
 }
-
-
 
 button {
   margin-bottom: 25px;
