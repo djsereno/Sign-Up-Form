@@ -163,29 +163,31 @@ input:active {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-input.interacted:invalid {
-  outline: 2px solid var(--color-invalid);
-}
-input.interacted:invalid + span::before {
-  position: absolute;
-  margin-right: 5px;
-  bottom: 0;
-  right: 0;
-  content: "✖";
-  color: var(--color-invalid);
-  background-color: white;
-}
-
-input.interacted:valid {
+input.interacted:not(.invalid):valid {
   outline: 2px solid var(--color-valid);
 }
-input.interacted:valid + span::before {
+input.interacted:not(.invalid):valid + span::before {
   position: absolute;
   margin-right: 5px;
   bottom: 0;
   right: 0;
   content: "✓";
   color: var(--color-valid);
+  background-color: white;
+}
+
+input.interacted:invalid,
+input.interacted.invalid {
+  outline: 2px solid var(--color-invalid);
+}
+input.interacted:invalid + span::before,
+input.interacted.invalid + span::before {
+  position: absolute;
+  margin-right: 5px;
+  bottom: 0;
+  right: 0;
+  content: "✖";
+  color: var(--color-invalid);
   background-color: white;
 }
 
