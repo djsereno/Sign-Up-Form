@@ -46,6 +46,9 @@
         </p>
         <form action="" method="post" id="user-info">
           <p>Sign Me Up!</p>
+          <p>
+            <span><strong>*</strong></span> = required fields
+          </p>
           <div class="form-body">
             <div class="form-entry">
               <label for="first_name">First Name</label>
@@ -59,25 +62,48 @@
               <label for="email"
                 >Email<span><strong>*</strong></span></label
               >
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="cayennepepper@gmail.com"
-                required
-              />
+              <div>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value=""
+                  placeholder="cayennepepper@gmail.com"
+                  required
+                />
+                <span></span>
+              </div>
             </div>
             <div class="form-entry">
               <label for="phone"> Phone Number</label>
-              <input type="tel" id="phone" placeholder="(XXX) XXX-XXXX" name="phone" />
+              <div>
+                <input
+                  type="tel"
+                  id="phone"
+                  placeholder="(XXX) XXX-XXXX"
+                  pattern="^(\d{3}|\(\d{3}\))[\s\-\.]?\d{3}[\s\-\.]?\d{4}$"
+                  name="phone"
+                />
+                <span></span>
+              </div>
             </div>
             <div class="form-entry">
-              <label for="password">Password</label>
-              <input type="password" id="password" name="password" required />
+              <label for="password"
+                >Password<span><strong>*</strong></span></label
+              >
+              <div>
+                <input type="password" id="password" name="password" value="" required />
+                <span></span>
+              </div>
             </div>
             <div class="form-entry">
-              <label for="confirm">Confirm Password</label>
-              <input type="password" id="confirm" name="confirm" required />
+              <label for="confirm"
+                >Confirm Password<span><strong>*</strong></span></label
+              >
+              <div>
+                <input type="password" id="confirm" name="confirm" value="" required />
+                <span></span>
+              </div>
             </div>
           </div>
         </form>
