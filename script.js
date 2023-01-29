@@ -3,6 +3,7 @@ const phone = document.querySelector("#phone");
 const pw = document.querySelector("#password");
 const pwConfirm = document.querySelector("#confirm");
 const pwRules = document.querySelectorAll(".password-rules p:nth-child(even)");
+const pwRulesDiv = document.querySelector(".password-rules");
 
 console.log(pwRules);
 
@@ -14,7 +15,10 @@ pwConfirm.addEventListener("keyup", setInteracted);
 pwConfirm.addEventListener("keyup", confirmPassword);
 
 function setInteracted(e) {
-  if (e.target.value !== "") e.target.classList.add("interacted");
+  if (e.target.value !== "") {
+    e.target.classList.add("interacted");
+    pwRulesDiv.classList.remove("hidden");
+  }
   if (e.target.value === "" && !e.target.hasAttribute("required")) {
     e.target.classList.remove("interacted");
   }

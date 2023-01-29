@@ -11,6 +11,7 @@
   --color-focus: #47bad4;
   --color-invalid: #d71741;
   --color-valid: #5cb85c;
+  --max-content-width: 700px;
 }
 
 * {
@@ -59,7 +60,7 @@ main {
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .logo img {
@@ -69,7 +70,7 @@ main {
 .text-wrapper {
   width: 100%;
   padding: 50px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .credits {
@@ -100,7 +101,7 @@ main {
 }
 
 .content-wrapper p {
-  max-width: 700px;
+  max-width: var(--max-content-width);
   margin-bottom: 20px;
   line-height: 1.6rem;
 }
@@ -123,6 +124,7 @@ form {
   margin: 15px 0px;
   column-gap: 50px;
   row-gap: 1rem;
+  max-width: var(--max-content-width);
 }
 
 .form-entry {
@@ -204,6 +206,10 @@ input.interacted.invalid + span::before {
   font-size: 0.7rem;
   font-weight: normal;
   text-transform: none;
+}
+
+.password-rules.hidden {
+  display: none;
 }
 
 .password-rules p {
