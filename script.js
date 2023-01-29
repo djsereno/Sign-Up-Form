@@ -5,19 +5,20 @@ const pwConfirm = document.querySelector("#confirm");
 const pwRules = document.querySelectorAll(".password-rules li");
 const pwRulesDiv = document.querySelector(".password-rules");
 
-console.log(pwRules);
-
 email.addEventListener("keyup", setInteracted);
 phone.addEventListener("keyup", setInteracted);
+
 pw.addEventListener("keyup", setInteracted);
 pw.addEventListener("keyup", verifyPassword);
+pw.addEventListener("focus", () => pwRulesDiv.classList.remove("hidden"));
+pw.addEventListener("focusout", () => pwRulesDiv.classList.add("hidden"));
+
 pwConfirm.addEventListener("keyup", setInteracted);
 pwConfirm.addEventListener("keyup", confirmPassword);
 
 function setInteracted(e) {
   if (e.target.value !== "") {
     e.target.classList.add("interacted");
-    pwRulesDiv.classList.remove("hidden");
   }
   if (e.target.value === "" && !e.target.hasAttribute("required")) {
     e.target.classList.remove("interacted");
@@ -37,6 +38,7 @@ function verifyPassword() {
     }
   }
   valid ? pw.classList.remove("invalid") : pw.classList.add("invalid");
+  confirmPassword();
 }
 
 function confirmPassword() {
