@@ -45,7 +45,7 @@ main {
   background-position: left bottom;
 }
 
-.text-wrapper {
+.brand-wrapper {
   margin-top: 200px;
   display: flex;
   justify-content: center;
@@ -56,7 +56,7 @@ main {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.text-wrapper img {
+.brand-wrapper img {
   height: 6rem;
 }
 
@@ -117,14 +117,14 @@ form p {
 }
 
 form h2 {
-  font-size: ;
+  font-size: 1.6rem;
 }
 
 .form-body {
   display: flex;
   flex-wrap: wrap;
   column-gap: 50px;
-  row-gap: 1rem;
+  row-gap: 1.5rem;
   max-width: var(--max-content-width);
 }
 
@@ -197,6 +197,32 @@ input.interacted:invalid + span::before,
 input.interacted.invalid + span::before {
   content: "✖";
   color: var(--color-invalid);
+}
+
+input.interacted:invalid + span::after,
+input.interacted.invalid + span::after {
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+  font-size: 0.7rem;
+  text-transform: none;
+  color: var(--color-invalid);
+}
+
+input.interacted:invalid + span.message-email::after {
+  content: "* Provide a valid email address";
+}
+
+input.interacted:invalid + span.message-phone::after {
+  content: "* Provide a valid 10-digit phone number";
+}
+
+input.interacted.invalid + span.message-password::after {
+  content: "* Passwords doesn't satisfy rules";
+}
+
+input.interacted.invalid + span.message-confirm::after {
+  content: "* Passwords must match";
 }
 
 .password-rules {
