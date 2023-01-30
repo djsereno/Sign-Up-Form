@@ -2,26 +2,33 @@ const email = document.querySelector("#email");
 const phone = document.querySelector("#phone");
 const pw = document.querySelector("#password");
 const pwConfirm = document.querySelector("#confirm");
+const pwRulesList = document.querySelector(".password-rules");
 const pwRules = document.querySelectorAll(".password-rules li");
-const pwRulesDiv = document.querySelector(".password-rules");
+
+email.addEventListener("focusout", setInteracted);
+phone.addEventListener("focusout", setInteracted);
+pw.addEventListener("focus", () => toggleRuleVisibility(true));
+pw.addEventListener("keyup", checkPassword);
+pw.addEventListener("focusout", setInteracted);
+pw.addEventListener("focusout", verifyPassword);
+pw.addEventListener("focusout", () => toggleRuleVisibility(false));
+pwConfirm.addEventListener("focusout", setInteracted);
+pwConfirm.addEventListener("keyup", confirmPassword);
 
 const rules = [/^.{8,20}$/, /[a-z]+/, /[A-Z]+/, /[0-9]+/, /[#?!@$%^&*-]+/];
 let valid = false;
 
-email.addEventListener("focusout", setInteracted);
-phone.addEventListener("focusout", setInteracted);
-
-pw.addEventListener("focus", setInteracted);
-pw.addEventListener("keyup", checkPassword);
-pw.addEventListener("focusout", verifyPassword);
-
-pwConfirm.addEventListener("focus", setInteracted);
-pwConfirm.addEventListener("keyup", confirmPassword);
-
 function setInteracted(e) {
-  e.target.classList.add("interacted");
-  if (e.target.value === "" && !e.target.hasAttribute("required")) {
-    e.target.classList.remove("interacted");
+  e.target.value === "" && !e.target.hasAttribute("required")
+    ? e.target.classList.remove("interacted")
+    : e.target.classList.add("interacted");
+}
+
+function toggleRuleVisibility(rulesVisible) {
+  if (rulesVisible) {
+    pwRulesList.classList.add("visible");
+  } else if (valid) {
+    pwRulesList.classList.remove("visible");
   }
 }
 
@@ -35,16 +42,26 @@ function checkPassword() {
       valid = false;
     }
   }
-  confirmPassword();
+  if (pw.classList.contains("interacted")) verifyPassword();
+  if (pwConfirm.classList.contains("interacted")) confirmPassword();
 }
 
 function verifyPassword() {
-  valid ? pw.classList.remove("invalid") : pw.classList.add("invalid");
-  valid ? pw.classList.add("valid") : pw.classList.remove("valid");
+  valid ? setValidity(pw, true) : setValidity(pw, false);
 }
 
 function confirmPassword() {
-  pw.value && pwConfirm.value && pw.value == pwConfirm.value
-    ? pwConfirm.classList.remove("invalid")
-    : pwConfirm.classList.add("invalid");
+  pw.value == pwConfirm.value && valid
+    ? setValidity(pwConfirm, true)
+    : setValidity(pwConfirm, false);
+}
+
+function setValidity(element, valid) {
+  if (valid) {
+    element.classList.add("valid");
+    element.classList.remove("invalid");
+  } else {
+    element.classList.add("invalid");
+    element.classList.remove("valid");
+  }
 }

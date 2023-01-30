@@ -141,8 +141,7 @@ form p {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  min-width: 200px;
-  max-width: 80%;
+  max-width: 100%;
   text-transform: uppercase;
 }
 
@@ -166,7 +165,7 @@ input {
   appearance: none;
   padding: 6px;
   width: 100%;
-  min-width: 200px;
+  min-width: 250px;
   outline: 1px solid var(--color-accent);
   border: none;
   border-radius: 4px;
@@ -188,6 +187,7 @@ input:active {
 /* span::after is used for validation message */
 
 /* VALIDATION BORDER */
+input.valid,
 input.interacted:not(.invalid):valid {
   outline: 2px solid var(--color-valid);
 }
@@ -204,6 +204,7 @@ input.interacted + span::before {
   top: 0.4ch;
   background-color: white;
 }
+input.valid + span::before,
 input.interacted:not(.invalid):valid + span::before {
   content: var(--symbol-valid);
   color: var(--color-valid);
@@ -231,20 +232,18 @@ input.interacted:invalid + span.message-phone::after {
   content: "* Provide a valid 10-digit phone number";
 }
 input.interacted.invalid + span.message-confirm::after {
-  content: "* Passwords must match";
+  content: "* Passwords must be valid and match";
 }
 
 /* PASSWORD VALIDATION RULE LIST STYLES */
+
 .password-rules {
-  /* display: none; */
+  display: none;
   padding-top: 1ch;
   text-transform: none;
 }
-input.interacted ~ .password-rules {
+.password-rules.visible {
   display: initial;
-}
-input.interacted.valid ~ .password-rules {
-  display: none;
 }
 
 .password-rules p {
@@ -262,7 +261,6 @@ input.interacted.valid ~ .password-rules {
 }
 
 /* PASSWORD VALIDATION RULE LIST VALIDATION SYMBOLS */
-/*  */
 .password-rules li::before {
   padding-right: 0.5ch;
   content: var(--symbol-valid);
@@ -272,8 +270,8 @@ input.interacted.valid ~ .password-rules {
   content: var(--symbol-valid);
   color: var(--color-valid);
 }
-input.invalid + .password-rules li:not(.valid),
-input.invalid + .password-rules li:not(.valid):before {
+input.invalid ~ .password-rules li:not(.valid),
+input.invalid ~ .password-rules li:not(.valid):before {
   content: var(--symbol-invalid);
   color: var(--color-invalid);
 }
@@ -292,7 +290,9 @@ button {
 }
 
 button:hover,
-a.log-in:hover {
+button:focus,
+a.log-in:hover,
+a.log-in:focus {
   filter: brightness(1.1);
   cursor: pointer;
 }
