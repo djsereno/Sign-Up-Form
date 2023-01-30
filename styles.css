@@ -9,10 +9,12 @@
   --color-primary: #d71741;
   --color-dark: #333;
   --color-focus: #47bad4;
-  --color-invalid: #d71741;
   --color-valid: #5cb85c;
+  --color-invalid: #d71741;
   --max-content-width: 700px;
   --splash-width: 35vw;
+  --symbol-valid: "✔";
+  --symbol-invalid: "✖";
 }
 
 * {
@@ -197,18 +199,18 @@ input.interacted.invalid {
 /* VALIDATION SYMBOLS */
 input.interacted + span::before {
   position: absolute;
-  right: 0;
-  bottom: 0;
   margin-right: 0.3rem;
+  right: 0;
+  top: 0.4ch;
   background-color: white;
 }
 input.interacted:not(.invalid):valid + span::before {
-  content: "✔";
+  content: var(--symbol-valid);
   color: var(--color-valid);
 }
 input.interacted:invalid + span::before,
 input.interacted.invalid + span::before {
-  content: "✖";
+  content: var(--symbol-invalid);
   color: var(--color-invalid);
 }
 
@@ -234,7 +236,7 @@ input.interacted.invalid + span.message-confirm::after {
 
 /* PASSWORD VALIDATION RULE LIST STYLES */
 .password-rules {
-  display: none;
+  /* display: none; */
   padding-top: 1ch;
   text-transform: none;
 }
@@ -263,16 +265,16 @@ input.interacted.valid ~ .password-rules {
 /*  */
 .password-rules li::before {
   padding-right: 0.5ch;
-  content: "✔";
+  content: var(--symbol-valid);
   color: white;
 }
 .password-rules li.valid::before {
-  content: "✔";
+  content: var(--symbol-valid);
   color: var(--color-valid);
 }
 input.invalid + .password-rules li:not(.valid),
 input.invalid + .password-rules li:not(.valid):before {
-  content: "✖";
+  content: var(--symbol-invalid);
   color: var(--color-invalid);
 }
 
