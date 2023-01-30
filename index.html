@@ -55,9 +55,7 @@
               <input type="text" id="last_name" name="last_name" placeholder="Pepper" />
             </div>
             <div class="form-entry">
-              <label for="email"
-                >Email<span><strong>*</strong></span></label
-              >
+              <label for="email">Email<span aria-label="required">*</span></label>
               <div class="input-wrapper">
                 <input
                   type="email"
@@ -83,28 +81,24 @@
               </div>
             </div>
             <div class="form-entry">
-              <label for="password"
-                >Password<span><strong>*</strong></span></label
-              >
+              <label for="password">Password<span aria-label="required">*</span></label>
               <div class="input-wrapper">
                 <input type="password" id="password" name="password" required />
-                <span class="message-password"></span>
-              </div>
-              <div class="password-rules hidden">
-                <p><strong>Passwords must satisfy the following rules:</strong></p>
-                <ul>
-                  <li>Length between 8-20 characters.</li>
-                  <li>Contain at least 1 lowercase letter [a-z]</li>
-                  <li>Contain at least 1 uppercase letter [A-Z]</li>
-                  <li>Contain at least 1 numeric digit [0-9]</li>
-                  <li>Contain at least 1 special character [#?!@$%^&*-]</li>
-                </ul>
+                <span></span>
+                <div class="password-rules">
+                  <p>Passwords must satisfy the following rules:</p>
+                  <ul>
+                    <li>Length between 8-20 characters.</li>
+                    <li>At least 1 lowercase letter [a-z]</li>
+                    <li>At least 1 uppercase letter [A-Z]</li>
+                    <li>At least 1 numeric digit [0-9]</li>
+                    <li>At least 1 symbol [#?!@$%^&*-]</li>
+                  </ul>
+                </div>
               </div>
             </div>
             <div class="form-entry">
-              <label for="confirm"
-                >Confirm Password<span><strong>*</strong></span></label
-              >
+              <label for="confirm">Confirm Password<span aria-label="required">*</span></label>
               <div class="input-wrapper">
                 <input type="password" id="confirm" name="confirm" required />
                 <span class="message-confirm"></span>

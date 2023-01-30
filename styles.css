@@ -1,8 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-/* font-family: 'Roboto', sans-serif; */
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 /* font-family: 'Pacifico', cursive; */
-
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap");
 /* font-family: 'Nunito', sans-serif; */
 
@@ -15,12 +12,18 @@
   --color-invalid: #d71741;
   --color-valid: #5cb85c;
   --max-content-width: 700px;
+  --splash-width: 35vw;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 main {
@@ -35,7 +38,7 @@ main {
   position: sticky;
   top: 0;
   height: 100vh;
-  width: 34vw;
+  width: var(--splash-width);
   text-align: center;
   color: white;
   background-color: var(--color-dark);
@@ -48,6 +51,7 @@ main {
 .brand-wrapper {
   margin-top: 200px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 20px;
@@ -81,12 +85,13 @@ main {
 }
 
 .content-wrapper {
-  width: 66vw;
+  width: calc(100vw - var(--splash-width));
   padding: 75px 50px;
   border-left: 1px solid var(--color-accent);
   color: var(--color-dark);
   font-size: 1.3rem;
   font-weight: bold;
+  z-index: 1;
 }
 
 .content-wrapper .tagline {
@@ -108,7 +113,7 @@ form {
   margin: 50px -50px 50px;
   padding: 50px;
   background-color: white;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
 form p {
@@ -134,14 +139,17 @@ form h2 {
   flex-direction: column;
   flex-grow: 1;
   text-transform: uppercase;
-  min-width: 250px;
+  min-width: 200px;
   max-width: 80%;
 }
 
 .input-wrapper {
   position: relative;
   display: flex;
-  align-items: center;
+
+  flex-direction: column;
+
+  align-items: left;
 }
 
 label {
@@ -159,7 +167,7 @@ input {
   border-radius: 4px;
   font-size: 1rem;
   width: 100%;
-  min-width: 250px;
+  min-width: 200px;
 }
 
 input::placeholder {
@@ -217,52 +225,50 @@ input.interacted:invalid + span.message-phone::after {
   content: "* Provide a valid 10-digit phone number";
 }
 
-input.interacted.invalid + span.message-password::after {
-  content: "* Passwords doesn't satisfy rules";
-}
-
 input.interacted.invalid + span.message-confirm::after {
   content: "* Passwords must match";
 }
 
-.password-rules {
+.floating {
   position: absolute;
-  z-index: 1;
-  top: 60px;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  background-color: var(--color-background);
-  padding: 10px;
-  border: 1px solid var(--color-accent);
-  border-radius: 4px;
+  bottom: 3rem;
+  z-index: 10;
+}
+
+.password-rules {
+  padding-top: 1ch;
+  display: none;
+  left: 0;
   font-size: 0.7rem;
-  font-weight: normal;
   text-transform: none;
 }
 
-.password-rules.hidden {
+input.interacted ~ .password-rules {
+  display: initial;
+}
+input.interacted.valid ~ .password-rules {
   display: none;
 }
 
 .password-rules p {
   margin: 0;
   padding: 0;
+  font-size: 0.7rem;
   line-height: 1rem;
-  color: var(--color-invalid);
-}
-
-.password-rules p {
-  grid-column: 1 / 3;
-  color: inherit;
 }
 
 .password-rules li {
   list-style: none;
-  color: var(--color-invalid);
 }
 
 .password-rules li::before {
   padding-right: 0.5ch;
+  content: "✔";
+  color: white;
+}
+
+input.invalid + .password-rules li:not(.valid),
+input.invalid + .password-rules li:not(.valid):before {
   content: "✖";
   color: var(--color-invalid);
 }
@@ -272,7 +278,7 @@ input.interacted.invalid + span.message-confirm::after {
 }
 
 .password-rules li.valid::before {
-  content: "✓";
+  content: "✔";
   color: var(--color-valid);
 }
 
