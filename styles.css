@@ -28,11 +28,13 @@ body {
 
 main {
   display: grid;
-  width: 100vw;
   grid-template-columns: 4fr 6fr;
+  width: 100vw;
   background-color: var(--color-background);
   font-family: "Nunito", sans-serif;
 }
+
+/* SPLASH SCREEN STYLES */
 
 .splash-wrapper {
   position: sticky;
@@ -44,19 +46,18 @@ main {
   background-color: var(--color-dark);
   background-image: url("images/background-splash-1.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: left bottom;
 }
 
 .brand-wrapper {
-  margin-top: 200px;
   display: flex;
-  flex-wrap: wrap;
+  margin-top: 200px;
+  padding: 20px;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
   width: 100%;
-  padding: 20px;
   background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -84,18 +85,16 @@ main {
   text-decoration: none;
 }
 
+/* CONTENT STYLES */
+
 .content-wrapper {
-  width: calc(100vw - var(--splash-width));
   padding: 75px 50px;
+  z-index: 1;
+  width: calc(100vw - var(--splash-width));
   border-left: 1px solid var(--color-accent);
   color: var(--color-dark);
   font-size: 1.3rem;
   font-weight: bold;
-  z-index: 1;
-}
-
-.content-wrapper .tagline {
-  margin-bottom: 1.6rem;
 }
 
 .content-wrapper p {
@@ -109,6 +108,8 @@ main {
   font-weight: 300;
 }
 
+/* FORM STYLES */
+
 form {
   margin: 50px -50px 50px;
   padding: 50px;
@@ -116,13 +117,13 @@ form {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
+form h2 {
+  font-size: 1.6rem;
+}
+
 form p {
   font-size: 1rem;
   margin: 20px 0;
-}
-
-form h2 {
-  font-size: 1.6rem;
 }
 
 .form-body {
@@ -138,18 +139,9 @@ form h2 {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  text-transform: uppercase;
   min-width: 200px;
   max-width: 80%;
-}
-
-.input-wrapper {
-  position: relative;
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: left;
+  text-transform: uppercase;
 }
 
 label {
@@ -159,15 +151,24 @@ label {
   letter-spacing: 0.2rem;
 }
 
+.validation-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+/* FORM INPUT STYLES */
+
 input {
   appearance: none;
   padding: 6px;
+  width: 100%;
+  min-width: 200px;
   outline: 1px solid var(--color-accent);
   border: none;
   border-radius: 4px;
   font-size: 1rem;
-  width: 100%;
-  min-width: 200px;
 }
 
 input::placeholder {
@@ -180,6 +181,20 @@ input:active {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+/* INPUT VALIDATION STYLES */
+/* span::before is used for validation symbol */
+/* span::after is used for validation message */
+
+/* VALIDATION BORDER */
+input.interacted:not(.invalid):valid {
+  outline: 2px solid var(--color-valid);
+}
+input.interacted:invalid,
+input.interacted.invalid {
+  outline: 2px solid var(--color-invalid);
+}
+
+/* VALIDATION SYMBOLS */
 input.interacted + span::before {
   position: absolute;
   right: 0;
@@ -187,19 +202,9 @@ input.interacted + span::before {
   margin-right: 0.3rem;
   background-color: white;
 }
-
-input.interacted:not(.invalid):valid {
-  outline: 2px solid var(--color-valid);
-}
-
 input.interacted:not(.invalid):valid + span::before {
-  content: "✓";
+  content: "✔";
   color: var(--color-valid);
-}
-
-input.interacted:invalid,
-input.interacted.invalid {
-  outline: 2px solid var(--color-invalid);
 }
 input.interacted:invalid + span::before,
 input.interacted.invalid + span::before {
@@ -207,6 +212,7 @@ input.interacted.invalid + span::before {
   color: var(--color-invalid);
 }
 
+/* VALIDATION MESSAGE */
 input.interacted:invalid + span::after,
 input.interacted.invalid + span::after {
   position: absolute;
@@ -216,33 +222,22 @@ input.interacted.invalid + span::after {
   text-transform: none;
   color: var(--color-invalid);
 }
-
 input.interacted:invalid + span.message-email::after {
   content: "* Provide a valid email address";
 }
-
 input.interacted:invalid + span.message-phone::after {
   content: "* Provide a valid 10-digit phone number";
 }
-
 input.interacted.invalid + span.message-confirm::after {
   content: "* Passwords must match";
 }
 
-.floating {
-  position: absolute;
-  bottom: 3rem;
-  z-index: 10;
-}
-
+/* PASSWORD VALIDATION RULE LIST STYLES */
 .password-rules {
-  padding-top: 1ch;
   display: none;
-  left: 0;
-  font-size: 0.7rem;
+  padding-top: 1ch;
   text-transform: none;
 }
-
 input.interacted ~ .password-rules {
   display: initial;
 }
@@ -256,41 +251,42 @@ input.interacted.valid ~ .password-rules {
   font-size: 0.7rem;
   line-height: 1rem;
 }
-
 .password-rules li {
+  font-size: 0.7rem;
   list-style: none;
 }
+.password-rules li.valid {
+  color: var(--color-valid);
+}
 
+/* PASSWORD VALIDATION RULE LIST VALIDATION SYMBOLS */
+/*  */
 .password-rules li::before {
   padding-right: 0.5ch;
   content: "✔";
   color: white;
 }
-
+.password-rules li.valid::before {
+  content: "✔";
+  color: var(--color-valid);
+}
 input.invalid + .password-rules li:not(.valid),
 input.invalid + .password-rules li:not(.valid):before {
   content: "✖";
   color: var(--color-invalid);
 }
 
-.password-rules li.valid {
-  color: var(--color-valid);
-}
-
-.password-rules li.valid::before {
-  content: "✔";
-  color: var(--color-valid);
-}
+/* CREATE ACCOUNT & LOGIN STYLES */
 
 button {
   margin-bottom: 25px;
   padding: 1rem 3rem;
-  font-size: 1.2rem;
   border: none;
   border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   background-color: var(--color-primary);
   color: white;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  font-size: 1.2rem;
 }
 
 button:hover,
@@ -304,7 +300,7 @@ p.log-in {
 }
 
 a.log-in {
-  text-decoration: none;
   color: var(--color-primary);
   font-weight: bold;
+  text-decoration: none;
 }

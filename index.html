@@ -45,18 +45,18 @@
           <p>
             <span><strong>*</strong></span> = required fields
           </p>
-          <div class="form-body">
-            <div class="form-entry">
+          <ol class="form-body">
+            <li class="form-entry" id="first-name-wrapper">
               <label for="first_name">First Name</label>
               <input type="text" id="first_name" name="first_name" placeholder="Cayenne" />
-            </div>
-            <div class="form-entry">
+            </li>
+            <li class="form-entry" id="last-name-wrapper">
               <label for="last_name">Last Name</label>
               <input type="text" id="last_name" name="last_name" placeholder="Pepper" />
-            </div>
-            <div class="form-entry">
+            </li>
+            <li class="form-entry" id="email-wrapper">
               <label for="email">Email<span aria-label="required">*</span></label>
-              <div class="input-wrapper">
+              <div class="validation-wrapper">
                 <input
                   type="email"
                   id="email"
@@ -66,10 +66,10 @@
                 />
                 <span class="message-email"></span>
               </div>
-            </div>
-            <div class="form-entry">
+            </li>
+            <li class="form-entry" id="phone-wrapper">
               <label for="phone"> Phone Number</label>
-              <div class="input-wrapper">
+              <div class="validation-wrapper">
                 <input
                   type="tel"
                   id="phone"
@@ -79,32 +79,30 @@
                 />
                 <span class="message-phone"></span>
               </div>
-            </div>
-            <div class="form-entry">
+            </li>
+            <li class="form-entry" id="password-wrapper">
               <label for="password">Password<span aria-label="required">*</span></label>
-              <div class="input-wrapper">
+              <div class="validation-wrapper">
                 <input type="password" id="password" name="password" required />
                 <span></span>
-                <div class="password-rules">
+                <ul class="password-rules">
                   <p>Passwords must satisfy the following rules:</p>
-                  <ul>
-                    <li>Length between 8-20 characters.</li>
-                    <li>At least 1 lowercase letter [a-z]</li>
-                    <li>At least 1 uppercase letter [A-Z]</li>
-                    <li>At least 1 numeric digit [0-9]</li>
-                    <li>At least 1 symbol [#?!@$%^&*-]</li>
-                  </ul>
-                </div>
+                  <li>Length between 8-20 characters.</li>
+                  <li>At least 1 lowercase letter [a-z]</li>
+                  <li>At least 1 uppercase letter [A-Z]</li>
+                  <li>At least 1 numeric digit [0-9]</li>
+                  <li>At least 1 symbol [#?!@$%^&*-]</li>
+                </ul>
               </div>
-            </div>
-            <div class="form-entry">
+            </li>
+            <li class="form-entry" id="confirm-wrapper">
               <label for="confirm">Confirm Password<span aria-label="required">*</span></label>
-              <div class="input-wrapper">
+              <div class="validation-wrapper">
                 <input type="password" id="confirm" name="confirm" required />
                 <span class="message-confirm"></span>
               </div>
-            </div>
-          </div>
+            </li>
+          </ol>
         </form>
         <button type="submit" form="user-info">Create Account</button>
         <p class="log-in">Already have an account? <a href="" class="log-in">Log In</a></p>
