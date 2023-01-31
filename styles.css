@@ -1,13 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
-/* font-family: 'Pacifico', cursive; */
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap");
-/* font-family: 'Nunito', sans-serif; */
 
 :root {
   --color-background: #c8553d;
   --color-accent: #8d705e;
   --color-primary: #e9e3b4;
-  --color-dark: #223127;
+  --color-dark: #222;
   --color-focus: #007cbe;
   --color-valid: #519b51;
   --color-invalid: #d71741;
@@ -43,12 +41,12 @@ main {
   top: 0;
   height: 100vh;
   width: var(--splash-width);
-  text-align: center;
-  color: white;
   background-color: var(--color-dark);
   background-image: url("images/background-splash.jpg");
   background-size: cover;
   background-position: left center;
+  text-align: center;
+  color: white;
 }
 
 .brand-wrapper {
@@ -59,8 +57,8 @@ main {
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
-  width: 100%;
   background-color: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
 }
 
 .brand-wrapper img {
@@ -70,15 +68,15 @@ main {
 .brand-name {
   margin: 0;
   font-family: "Pacifico", cursive;
-  font-size: 4rem;
+  font-size: clamp(3rem, 5vw, 4rem);
 }
 
 .credits {
   position: absolute;
+  bottom: 0.5rem;
   margin: auto;
   padding: 5px;
   width: 100%;
-  bottom: 0.5rem;
   font-size: 0.8rem;
 }
 
@@ -90,8 +88,7 @@ main {
 /* CONTENT STYLES */
 
 .content-wrapper {
-  padding: 75px 50px;
-  z-index: 1;
+  padding: 50px;
   width: calc(100vw - var(--splash-width));
   border-left: 1px solid var(--color-accent);
   color: var(--color-dark);
@@ -100,8 +97,8 @@ main {
 }
 
 .content-wrapper p {
-  max-width: var(--max-content-width);
   margin-bottom: 20px;
+  max-width: var(--max-content-width);
   line-height: 1.6rem;
 }
 
@@ -124,8 +121,8 @@ form h2 {
 }
 
 form p {
-  font-size: 1rem;
   margin: 20px 0;
+  font-size: 1rem;
 }
 
 .form-body {
@@ -139,8 +136,8 @@ form p {
 .form-entry {
   position: relative;
   flex-grow: 1;
+  min-width: 280px;
   text-transform: uppercase;
-  min-width: calc(250px + 30px);
   list-style: none;
 }
 
@@ -189,7 +186,9 @@ input.interacted.invalid {
 /* VALIDATION SYMBOLS */
 .validation-symbol {
   display: inline-block;
-  transform: translateY(0.2rem);
+  padding: 6px 0px;
+  min-width: 20px;
+  font-size: 1rem;
 }
 input.valid ~ .validation-symbol::before,
 input.interacted:not(.invalid):valid ~ .validation-symbol::before {
