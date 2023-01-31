@@ -4,11 +4,11 @@
 /* font-family: 'Nunito', sans-serif; */
 
 :root {
-  --color-background: #9c9c86;
-  --color-accent: #777767;
-  --color-primary: #d71741;
+  --color-background: #c8553d;
+  --color-accent: #8d705e;
+  --color-primary: #e9e3b4;
   --color-dark: #223127;
-  --color-focus: #007CBE;
+  --color-focus: #007cbe;
   --color-valid: #519b51;
   --color-invalid: #d71741;
   --max-content-width: 700px;
@@ -131,32 +131,25 @@ form p {
 .form-body {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 50px;
+  column-gap: 20px;
   row-gap: 1.5rem;
   max-width: var(--max-content-width);
 }
 
 .form-entry {
   position: relative;
-  display: flex;
-  flex-direction: column;
   flex-grow: 1;
-  max-width: 100%;
   text-transform: uppercase;
+  min-width: calc(250px + 30px);
+  list-style: none;
 }
 
 label {
+  display: block;
   margin-bottom: 0.2rem;
   font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.2rem;
-}
-
-.validation-wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
 }
 
 /* FORM INPUT STYLES */
@@ -164,8 +157,7 @@ label {
 input {
   appearance: none;
   padding: 6px;
-  width: 100%;
-  min-width: 250px;
+  width: calc(100% - 30px);
   outline: 1px solid var(--color-accent);
   border: none;
   border-radius: 4px;
@@ -183,8 +175,6 @@ input:active {
 }
 
 /* INPUT VALIDATION STYLES */
-/* span::before is used for validation symbol */
-/* span::after is used for validation message */
 
 /* VALIDATION BORDER */
 input.valid,
@@ -197,41 +187,37 @@ input.interacted.invalid {
 }
 
 /* VALIDATION SYMBOLS */
-input.interacted + span::before {
-  position: absolute;
-  margin-right: 0.3rem;
-  right: 0;
-  top: 0.4ch;
-  background-color: white;
+.validation-symbol {
+  display: inline-block;
+  transform: translateY(0.2rem);
 }
-input.valid + span::before,
-input.interacted:not(.invalid):valid + span::before {
+input.valid ~ .validation-symbol::before,
+input.interacted:not(.invalid):valid ~ .validation-symbol::before {
   content: var(--symbol-valid);
   color: var(--color-valid);
 }
-input.interacted:invalid + span::before,
-input.interacted.invalid + span::before {
+input.interacted:invalid ~ .validation-symbol::before,
+input.interacted.invalid ~ .validation-symbol::before {
   content: var(--symbol-invalid);
   color: var(--color-invalid);
 }
 
 /* VALIDATION MESSAGE */
-input.interacted:invalid + span::after,
-input.interacted.invalid + span::after {
+.validation-message::before {
   position: absolute;
-  left: 0;
-  bottom: -20px;
+  display: block;
+  padding-top: 0.3rem;
+  color: var(--color-invalid);
   font-size: 0.7rem;
   text-transform: none;
-  color: var(--color-invalid);
 }
-input.interacted:invalid + span.message-email::after {
+input.interacted:invalid ~ .validation-message.email::before {
   content: "* Provide a valid email address";
 }
-input.interacted:invalid + span.message-phone::after {
+input.interacted:invalid ~ .validation-message.phone::before {
   content: "* Provide a valid 10-digit phone number";
 }
-input.interacted.invalid + span.message-confirm::after {
+input.interacted.invalid ~ .validation-message.confirm::before {
   content: "* Passwords must be valid and match";
 }
 
@@ -239,11 +225,11 @@ input.interacted.invalid + span.message-confirm::after {
 
 .password-rules {
   display: none;
-  padding-top: 1ch;
+  padding-top: 0.3rem;
   text-transform: none;
 }
 .password-rules.visible {
-  display: initial;
+  display: block;
 }
 
 .password-rules p {
@@ -285,7 +271,6 @@ button {
   border-radius: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   background-color: var(--color-primary);
-  color: white;
   font-size: 1.2rem;
   font-weight: bold;
 }
