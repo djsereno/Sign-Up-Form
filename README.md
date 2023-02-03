@@ -28,7 +28,7 @@
 
 Derek Sereno - [LinkedIn](https://www.linkedin.com/in/dereksereno/) - [Email](mailto:djsereno91@gmail.com)
 
-Project Link: [https://github.com/djsereno/Calculator/](https://github.com/djsereno/Calculator/)
+Project Link: [https://github.com/djsereno/Sign-Up-Form/](https://github.com/djsereno/Sign-Up-Form/)
 
 ## Acknowledgments
 
